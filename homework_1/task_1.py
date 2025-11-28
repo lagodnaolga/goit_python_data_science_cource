@@ -13,21 +13,11 @@ def get_days_from_today(date: str) ->int:
     
     ValueError, якщо рядок date не відповідає формату 'YYYY-MM-DD'.
     """
-    date_given=datetime.strptime(date, '%Y-%m-%d').date() #переводимо date із формату String в об'єкт datetime у форматі '%Y-%m-%d'
-    date_current=datetime.today().date() #визначаємо поточну дату
-    num_of_days=(date_current-date_given).days #вираховуємо різницю між поточною та заданою датою
-    return num_of_days
-
-
-    
-while True:
-    date=input(str('Введіть дату: ')) #користувач вводить дату
-    
     try:
-        get_days_from_today(date) #викликаємо функцію days_from_today 
-        print(get_days_from_today(date))
-        break #виходимо з циклу, якщо дата введена правильно
+        date_given=datetime.strptime(date, '%Y-%m-%d').date() #переводимо date із формату String в об'єкт datetime у форматі '%Y-%m-%d'
+        date_current=datetime.today().date() #визначаємо поточну дату
+        num_of_days=(date_current-date_given).days #вираховуємо різницю між поточною та заданою датою
+        return num_of_days
     except ValueError:
-        print (f'Невірно введена дата. Спробуйте ще раз.') #обробляємо помилку, якщо дата вказана в неправильному форматі, та повторно запускаємо функцію
-        
+        raise ValueError(f'Невірно введена дата. Спробуйте ще раз.') #обробляємо помилку, якщо дата вказана в неправильному форматі, та повторно запускаємо функцію
 

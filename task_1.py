@@ -19,7 +19,18 @@ def get_days_from_today(date: str) ->int:
         num_of_days=(date_current-date_given).days #вираховуємо різницю між поточною та заданою датою
         return num_of_days
     except ValueError:
-        raise ValueError("Невірний формат дати. Очікується YYYY-MM-DD")
+        print (f'Невірно введена дата. Спробуйте ще раз.') #обробляємо помилку, якщо дата вказана в неправильному форматі, та повторно запускаємо функцію
 
 
     
+while True:
+    date=input(str('Введіть дату: ')) #користувач вводить дату
+    
+    try:
+        get_days_from_today(date) #викликаємо функцію days_from_today 
+        print(get_days_from_today(date))
+        break #виходимо з циклу, якщо дата введена правильно
+    except ValueError:
+        print (f'Невірно введена дата. Спробуйте ще раз.') #обробляємо помилку, якщо дата вказана в неправильному форматі, та повторно запускаємо функцію
+        
+
